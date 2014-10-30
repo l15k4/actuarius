@@ -14,10 +14,10 @@ trait Transformer {
      */
     def deco():Decorator = Decorator
 
-    private object lineTokenizer extends LineTokenizer {
+    object lineTokenizer extends LineTokenizer {
         override def allowXmlBlocks() = Transformer.this.deco().allowVerbatimXml()
     }
-    private object blockParser extends BlockParsers {
+    object blockParser extends BlockParsers {
         override def deco() = Transformer.this.deco()
     }
 
@@ -28,6 +28,11 @@ trait Transformer {
         //first, run the input through the line tokenizer
         val lineReader = lineTokenizer.tokenize(s)
         //then, run it through the block parser
+        blockParser(lineReader)
+    }
+
+    def apply(lines: List[String]): String = {
+        val lineReader = lineTokenizer.tokenize(lines)
         blockParser(lineReader)
     }
 }

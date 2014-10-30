@@ -3,7 +3,6 @@ package eu.henkelmann.actuarius
 import scala.util.parsing.combinator.Parsers
 import scala.collection.mutable.{HashMap, ArrayBuffer}
 import scala.util.parsing.input.{Position, Reader}
-import scala.xml
 
 /**
  * A Reader for reading whole Strings as tokens.

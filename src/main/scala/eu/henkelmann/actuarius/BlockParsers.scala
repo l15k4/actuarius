@@ -1,10 +1,6 @@
 package eu.henkelmann.actuarius
 
-import collection.immutable.StringOps
-import collection.mutable.ListBuffer
-import xml.{Group, Node, Text, NodeSeq, Elem => XmlElem, TopScope, XML}
-import xml.parsing.XhtmlParser
-import util.parsing.combinator.{Parsers, RegexParsers}
+import util.parsing.combinator.Parsers
 
 /**
  * A parser for the markdown language.
@@ -20,7 +16,7 @@ trait BlockParsers extends Parsers {
     /**
      * Used to define the output format of parsed blocks and whether verbatim xml blocks are allowed.
      */
-    def deco():Decorator = Decorator
+    def deco:Decorator = Decorator
 
     /**
      * returns the current indentation string repeated the given number of levels

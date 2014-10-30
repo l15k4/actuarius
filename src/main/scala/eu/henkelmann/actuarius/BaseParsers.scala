@@ -26,7 +26,7 @@ trait BaseParsers extends RegexParsers {
     /** accepts one or more spaces or tabs
      * returns the matched whitespace
      */
-    def ws:Parser[String] = """( |\t|\v)+""".r
+    def ws:Parser[String] = """( |\t)+""".r
 
     /** accepts zero or more spaces or tabs
      * returns the matched whitespace
