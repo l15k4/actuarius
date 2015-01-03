@@ -1,9 +1,12 @@
+import org.scalajs.sbtplugin.ScalaJSPlugin
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
+
 //Project Information
 name := "actuarius"
 
 description := "Actuarius is a Markdown Processor written in Scala using parser combinators."
 
-scalaVersion := "2.11.0"
+scalaVersion := "2.11.4"
 
 scalacOptions += "-deprecation"
 
@@ -17,18 +20,22 @@ resolvers += "Scala Snapshots" at "https://oss.sonatype.org/content/repositories
 
 resolvers += "Scala" at "https://oss.sonatype.org/content/groups/scala-tools/"
 
-version := "0.2.8-SNAPSHOT"
+version := "0.2.9-SNAPSHOT"
 
 // crossScalaVersions in ThisBuild := Seq("2.9.2", "2.10.0")
 
-scalaJSSettings
+lazy val `actuarius` = (project in file(".")).enablePlugins(ScalaJSPlugin)
 
-utest.jsrunner.Plugin.utestJsSettings
+scalaJSStage := FastOptStage
+
+testFrameworks += new TestFramework("utest.runner.Framework")
+
+requiresDOM := true
 
 libraryDependencies ++= {
   Seq(
     "org.scalajs" %%% "scala-parser-combinators" % "1.0.3-SNAPSHOT",
-    "com.lihaoyi" %%% "utest" % "0.2.5-SNAPSHOT" % "test"
+    "com.lihaoyi" %%% "utest" % "0.2.5-M3-SNAPSHOT" % "test"
   )
 }
 
