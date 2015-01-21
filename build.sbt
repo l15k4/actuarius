@@ -6,7 +6,7 @@ name := "actuarius"
 
 description := "Actuarius is a Markdown Processor written in Scala using parser combinators."
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.5"
 
 scalacOptions += "-deprecation"
 
@@ -14,7 +14,7 @@ publishMavenStyle := true
 
 autoCompilerPlugins := true
 
-organization := "eu.henkelmann" 
+organization := "com.viagraphs" // note that true organization is "eu.henkelmann", this is for sonatype publishing
 
 resolvers += "Scala Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/" 
 
@@ -42,9 +42,9 @@ libraryDependencies ++= {
 //TODO: reactivate once junit-XML listener is on maven central
 //testListeners <<= target.map(t => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath)))
 
-publishTo <<= version { (v: String) =>
+publishTo := {
   val nexus = "https://oss.sonatype.org/"
-  if (v.trim.endsWith("SNAPSHOT"))
+  if (isSnapshot.value)
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else
     Some("releases"  at nexus + "service/local/staging/deploy/maven2")
@@ -64,8 +64,8 @@ pomExtra := (
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/chenkelmann/actuarius.git</url>
-    <connection>scm:git:git://github.com/chenkelmann/actuarius.git</connection>
+    <url>git@github.com:l15k4/actuarius.git</url>
+    <connection>scm:git:git@github.com:l15k4/actuarius.git</connection>
   </scm>
   <developers>
   <developer>
@@ -77,6 +77,11 @@ pomExtra := (
       <id>dpp</id>
       <name>David Pollak</name>
       <url>http://blog.goodstuff.im</url>
+    </developer>
+    <developer>
+      <id>l15k4</id>
+      <name>Jakub Liska</name>
+      <email>liska.jakub@gmail.com</email>
     </developer>
   </developers>)
 
