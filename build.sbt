@@ -35,7 +35,7 @@ requiresDOM := true
 libraryDependencies ++= {
   Seq(
     "org.scalajs" %%% "scala-parser-combinators" % "1.0.3-SNAPSHOT",
-    "com.lihaoyi" %%% "utest" % "0.2.5-M3-SNAPSHOT" % "test"
+    "com.lihaoyi" %%% "utest" % "0.2.5-RC1" % "test"
   )
 }
 
